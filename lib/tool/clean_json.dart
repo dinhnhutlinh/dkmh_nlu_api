@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'remove_entriy.dart' as r;
 
 void main() {
   // claimThingNeed();
@@ -22,6 +23,14 @@ void cleanHarFile() {
           element['request']['method'] == 'POST')
       ? entries
       : [];
+
+  List<String> apiNeed = r.listAPI();
+
+  entries = entries.where((element) {
+    String url = element['request']['url'];
+    return apiNeed.contains(url);
+  }).toList();
+
   final data = {
     'data': entries.map((element) {
       Map<String, dynamic> request = element['request'];
@@ -31,7 +40,7 @@ void cleanHarFile() {
       List<dynamic>? headers = request['headers'];
 
       String? mineType = request['postData']?['mimeType'];
-      String? body = request['postData']?['text'];
+
       List<dynamic>? params = request['postData']?['params'];
 
       Map<String, dynamic> formatHeader =
@@ -40,8 +49,18 @@ void cleanHarFile() {
       Map<String, dynamic> formatParams =
           params == null ? {} : {for (var e in params) e['name']: e['value']};
 
+      String body = request['postData']?['text'] ?? '{}';
+
+      final bodyText = body.replaceAll('\\"', '"');
+
+      var bodyJson = {};
+      try {
+        bodyJson = jsonDecode(bodyText);
+        // ignore: empty_catches
+      } catch (e) {}
+
       String responceText = response['content']['text'];
-      print(responceText);
+
       // responceText = responceText.substring(1, responceText.length - 1);
       responceText = responceText.replaceAll('\\"', '"');
 
@@ -56,7 +75,7 @@ void cleanHarFile() {
         'method': method,
         'headers': formatHeader,
         'mineType': mineType,
-        'body': body,
+        'body': bodyJson,
         'params': formatParams,
         'response': responseJson,
       };
