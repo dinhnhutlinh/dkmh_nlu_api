@@ -1,0 +1,340 @@
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/web/w-locdschucnang
+Content-Type: text/plain
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/auth/login
+Content-Type: application/x-www-form-urlencoded
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/checkvalid/w-yeucauxacnhannamhocmoi
+Content-Type: text/plain
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/web/w-locdschucnang
+Content-Type: text/plain
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/dkmh/w-locsinhvieninfo
+Content-Type: text/plain
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/web/w-locdsthongbao
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/web/w-showtbnohocphi
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sms/w-kiemtrasvnhapduthongtintt
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sms/w-kiemtrasvnhapduthongtinlylich
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/rms/w-locdsloaitienquyet
+Content-Type: text/plain
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/rms/w-locdsmontienquyet
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/rms/w-locdsmontienquyet
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/rms/w-locdsmontienquyet
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/rms/w-locdsmontienquyet
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/web/w-locdsbaiviet
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/web/w-locdsbaiviet
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/web/w-showtbnohocphi
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sms/w-kiemtrasvnhapduthongtintt
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sms/w-kiemtrasvnhapduthongtinlylich
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/rms/w-locdsloaitienquyet
+Content-Type: text/plain
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/rms/w-locdsmontienquyet
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/dkmh/w-checkvaliddangkymonhoc
+Content-Type: text/plain
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sms/w-locketquaduyetsinhvien
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/srm/w-kiemtrasettinghoanthanhdg
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/dkmh/w-locdsdieukienloc
+Content-Type: text/plain
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/dkmh/w-locdsnhomto
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/dkmh/w-locdskqdkmhsinhvien
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/web/w-showtbnohocphi
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sms/w-kiemtrasvnhapduthongtintt
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sms/w-kiemtrasvnhapduthongtinlylich
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/srm/w-kiemtrasettinghoanthanhdg
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sch/w-locdshockytkbuser
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sch/w-locdsdoituongthoikhoabieuhocky
+Content-Type: text/plain
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sch/w-locdstkbhockytheodoituong
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sch/w-locdsmonhoccotkb
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sch/w-locdstkbhockytheodoituong
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sch/w-locdskhoasinhviencotkb
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sch/w-locdstkbhockytheodoituong
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sch/w-locdstkbhockytheodoituong
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sch/w-locdslopcotkb
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sch/w-locdstkbhockytheodoituong
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/web/w-showtbnohocphi
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sms/w-kiemtrasvnhapduthongtintt
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sms/w-kiemtrasvnhapduthongtinlylich
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/srm/w-locdsnganhsinhvien
+Content-Type: text/plain
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/srm/w-lochockydanhgia
+Content-Type: text/plain
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/srm/w-locsettingxemdiemdg
+Content-Type: text/plain
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/srm/w-kiemtrahoanthanhdg
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/srm/w-locdsdiemsinhvien
+Content-Type: text/plain
+
+METHOD: GET
+URL: https://dkmh.hcmuaf.edu.vn/signalr/ping?_=1678944025038
+Content-Type: application/json; charset=UTF-8
+
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/zms/w-locdsformdanhgia
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/web/w-showtbnohocphi
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sms/w-kiemtrasvnhapduthongtintt
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sms/w-kiemtrasvnhapduthongtinlylich
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/srm/w-kiemtrasettinghoanthanhdg
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sch/w-locdshockytkbuser
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sch/w-locdsdoituongthoikhoabieu
+Content-Type: text/plain
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sch/w-locdstkbtuanusertheohocky
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/rms/w-locdshockyhoadondientu
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/rms/w-locdshoadondientu
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/web/w-showtbnohocphi
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sms/w-kiemtrasvnhapduthongtintt
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sms/w-kiemtrasvnhapduthongtinlylich
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/srm/w-kiemtrasettinghoanthanhdg
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sch/w-locdshockytkbuser
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sch/w-locdsdoituongthoikhoabieu
+Content-Type: text/plain
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sch/w-locdstkbtuanusertheohocky
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/rms/w-locdshockyhoadondientu
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/rms/w-locdshoadondientu
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/web/w-showtbnohocphi
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sms/w-kiemtrasvnhapduthongtintt
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sms/w-kiemtrasvnhapduthongtinlylich
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/srm/w-kiemtrasettinghoanthanhdg
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sch/w-locdshockytkbuser
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sch/w-locdsdoituongthoikhoabieu
+Content-Type: text/plain
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sch/w-locdstkbtuanusertheohocky
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/web/w-showtbnohocphi
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sms/w-kiemtrasvnhapduthongtintt
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sms/w-kiemtrasvnhapduthongtinlylich
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/web/w-locdsthongbao
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/web/w-showtbnohocphi
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sms/w-kiemtrasvnhapduthongtintt
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sms/w-kiemtrasvnhapduthongtinlylich
+Content-Type: application/json
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sch/w-locdschuongtrinhdaotao
+Content-Type: text/plain
+
+METHOD: POST
+URL: https://dkmh.hcmuaf.edu.vn/api/sch/w-locdsctdtsinhvien
+Content-Type: application/json

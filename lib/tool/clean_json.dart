@@ -2,8 +2,70 @@ import 'dart:convert';
 import 'dart:io';
 
 void main() {
-  claimThingNeed();
+  // claimThingNeed();
   // changeFormatResponce();
+  // requestFile();
+  cleanHarFile();
+}
+
+void cleanHarFile() {
+  File file = File('dkmh.hcmuaf.edu.vn.har');
+
+  String content = file.readAsStringSync();
+
+  Map<String, dynamic> json = jsonDecode(content);
+
+  List<dynamic> entries = json['log']['entries'];
+
+  entries = entries.any((element) =>
+          element['request']['url'].contains('api') &&
+          element['request']['method'] == 'POST')
+      ? entries
+      : [];
+  final data = {
+    'data': entries.map((element) {
+      Map<String, dynamic> request = element['request'];
+      Map<String, dynamic> response = element['response'];
+      String url = request['url'];
+      String method = request['method'];
+      List<dynamic>? headers = request['headers'];
+
+      String? mineType = request['postData']?['mimeType'];
+      String? body = request['postData']?['text'];
+      List<dynamic>? params = request['postData']?['params'];
+
+      Map<String, dynamic> formatHeader =
+          headers == null ? {} : {for (var e in headers) e['name']: e['value']};
+
+      Map<String, dynamic> formatParams =
+          params == null ? {} : {for (var e in params) e['name']: e['value']};
+
+      String responceText = response['content']['text'];
+      print(responceText);
+      // responceText = responceText.substring(1, responceText.length - 1);
+      responceText = responceText.replaceAll('\\"', '"');
+
+      var responseJson = {};
+      try {
+        responseJson = jsonDecode(responceText);
+        // ignore: empty_catches
+      } catch (e) {}
+
+      return {
+        'url': url,
+        'method': method,
+        'headers': formatHeader,
+        'mineType': mineType,
+        'body': body,
+        'params': formatParams,
+        'response': responseJson,
+      };
+    }).toList()
+  };
+
+  File file2 = File('api_cleaned.json');
+
+  file2.writeAsStringSync(jsonEncode(data));
 }
 
 void newFile() {
@@ -110,4 +172,32 @@ void changeFormatResponce() {
   file2.writeAsStringSync(jsonEncode({
     'data': jsonFormated,
   }));
+}
+
+void requestFile() {
+  File file = File('keys_need_formated.json');
+
+  String content = file.readAsStringSync();
+
+  Map<String, dynamic> json = jsonDecode(content);
+
+  List<dynamic> entries = json['data'];
+
+  final listRequest = entries.map((element) {
+    final request = element['request'];
+
+    return {
+      'method': request['method'],
+      'url': request['url'],
+      'Content-Type': request['headers']['Content-Type'],
+    };
+  }).toList();
+
+  File file2 = File('request.txt');
+
+  for (var request in listRequest) {
+    file2.writeAsStringSync(
+        'METHOD: ${request['method']}\nURL: ${request['url']}\nContent-Type: ${request['Content-Type']}\n\n',
+        mode: FileMode.append);
+  }
 }
