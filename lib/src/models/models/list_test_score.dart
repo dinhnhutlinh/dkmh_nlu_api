@@ -1,54 +1,43 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-import 'data.dart';
+import 'ds_doi_tuong_tkb.dart';
 
+part 'list_test_score.g.dart';
+
+@JsonSerializable()
 class ListTestScore extends Equatable {
-  final Data? data;
-  final bool? result;
-  final int? code;
+  @JsonKey(name: 'total_items')
+  final int? totalItems;
+  @JsonKey(name: 'total_pages')
+  final int? totalPages;
+  @JsonKey(name: 'ds_doi_tuong_tkb')
+  final List<DsDoiTuongTkb>? dsDoiTuongTkb;
 
-  const ListTestScore({this.data, this.result, this.code});
+  const ListTestScore({
+    this.totalItems,
+    this.totalPages,
+    this.dsDoiTuongTkb,
+  });
 
-  factory ListTestScore.fromMap(Map<String, dynamic> data) => ListTestScore(
-        data: data['data'] == null
-            ? null
-            : Data.fromMap(data['data'] as Map<String, dynamic>),
-        result: data['result'] as bool?,
-        code: data['code'] as int?,
-      );
-
-  Map<String, dynamic> toMap() => {
-        'data': data?.toMap(),
-        'result': result,
-        'code': code,
-      };
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [ListTestScore].
-  factory ListTestScore.fromJson(String data) {
-    return ListTestScore.fromMap(json.decode(data) as Map<String, dynamic>);
+  factory ListTestScore.fromJson(Map<String, dynamic> json) {
+    return _$ListTestScoreFromJson(json);
   }
 
-  /// `dart:convert`
-  ///
-  /// Converts [ListTestScore] to a JSON string.
-  String toJson() => json.encode(toMap());
+  Map<String, dynamic> toJson() => _$ListTestScoreToJson(this);
 
   ListTestScore copyWith({
-    Data? data,
-    bool? result,
-    int? code,
+    int? totalItems,
+    int? totalPages,
+    List<DsDoiTuongTkb>? dsDoiTuongTkb,
   }) {
     return ListTestScore(
-      data: data ?? this.data,
-      result: result ?? this.result,
-      code: code ?? this.code,
+      totalItems: totalItems ?? this.totalItems,
+      totalPages: totalPages ?? this.totalPages,
+      dsDoiTuongTkb: dsDoiTuongTkb ?? this.dsDoiTuongTkb,
     );
   }
 
   @override
-  List<Object?> get props => [data, result, code];
+  List<Object?> get props => [totalItems, totalPages, dsDoiTuongTkb];
 }

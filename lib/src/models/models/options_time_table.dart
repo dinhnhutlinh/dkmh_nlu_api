@@ -1,56 +1,43 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-import 'data.dart';
+import 'ds_doi_tuong_tkb.dart';
 
+part 'options_time_table.g.dart';
+
+@JsonSerializable()
 class OptionsTimeTable extends Equatable {
-  final Data? data;
-  final bool? result;
-  final int? code;
+  @JsonKey(name: 'total_items')
+  final int? totalItems;
+  @JsonKey(name: 'total_pages')
+  final int? totalPages;
+  @JsonKey(name: 'ds_doi_tuong_tkb')
+  final List<DsDoiTuongTkb>? dsDoiTuongTkb;
 
-  const OptionsTimeTable({this.data, this.result, this.code});
+  const OptionsTimeTable({
+    this.totalItems,
+    this.totalPages,
+    this.dsDoiTuongTkb,
+  });
 
-  factory OptionsTimeTable.fromMap(Map<String, dynamic> data) {
-    return OptionsTimeTable(
-      data: data['data'] == null
-          ? null
-          : Data.fromMap(data['data'] as Map<String, dynamic>),
-      result: data['result'] as bool?,
-      code: data['code'] as int?,
-    );
+  factory OptionsTimeTable.fromJson(Map<String, dynamic> json) {
+    return _$OptionsTimeTableFromJson(json);
   }
 
-  Map<String, dynamic> toMap() => {
-        'data': data?.toMap(),
-        'result': result,
-        'code': code,
-      };
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [OptionsTimeTable].
-  factory OptionsTimeTable.fromJson(String data) {
-    return OptionsTimeTable.fromMap(json.decode(data) as Map<String, dynamic>);
-  }
-
-  /// `dart:convert`
-  ///
-  /// Converts [OptionsTimeTable] to a JSON string.
-  String toJson() => json.encode(toMap());
+  Map<String, dynamic> toJson() => _$OptionsTimeTableToJson(this);
 
   OptionsTimeTable copyWith({
-    Data? data,
-    bool? result,
-    int? code,
+    int? totalItems,
+    int? totalPages,
+    List<DsDoiTuongTkb>? dsDoiTuongTkb,
   }) {
     return OptionsTimeTable(
-      data: data ?? this.data,
-      result: result ?? this.result,
-      code: code ?? this.code,
+      totalItems: totalItems ?? this.totalItems,
+      totalPages: totalPages ?? this.totalPages,
+      dsDoiTuongTkb: dsDoiTuongTkb ?? this.dsDoiTuongTkb,
     );
   }
 
   @override
-  List<Object?> get props => [data, result, code];
+  List<Object?> get props => [totalItems, totalPages, dsDoiTuongTkb];
 }

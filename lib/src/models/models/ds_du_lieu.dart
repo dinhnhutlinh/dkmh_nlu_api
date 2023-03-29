@@ -1,37 +1,24 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'ds_du_lieu.g.dart';
+
+@JsonSerializable()
 class DsDuLieu extends Equatable {
+  @JsonKey(name: 'id_du_lieu')
   final String? idDuLieu;
+  @JsonKey(name: 'ma_du_lieu')
   final String? maDuLieu;
+  @JsonKey(name: 'ten_du_lieu')
   final String? tenDuLieu;
 
   const DsDuLieu({this.idDuLieu, this.maDuLieu, this.tenDuLieu});
 
-  factory DsDuLieu.fromMap(Map<String, dynamic> data) => DsDuLieu(
-        idDuLieu: data['id_du_lieu'] as String?,
-        maDuLieu: data['ma_du_lieu'] as String?,
-        tenDuLieu: data['ten_du_lieu'] as String?,
-      );
-
-  Map<String, dynamic> toMap() => {
-        'id_du_lieu': idDuLieu,
-        'ma_du_lieu': maDuLieu,
-        'ten_du_lieu': tenDuLieu,
-      };
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [DsDuLieu].
-  factory DsDuLieu.fromJson(String data) {
-    return DsDuLieu.fromMap(json.decode(data) as Map<String, dynamic>);
+  factory DsDuLieu.fromJson(Map<String, dynamic> json) {
+    return _$DsDuLieuFromJson(json);
   }
 
-  /// `dart:convert`
-  ///
-  /// Converts [DsDuLieu] to a JSON string.
-  String toJson() => json.encode(toMap());
+  Map<String, dynamic> toJson() => _$DsDuLieuToJson(this);
 
   DsDuLieu copyWith({
     String? idDuLieu,

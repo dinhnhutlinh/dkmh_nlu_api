@@ -1,54 +1,67 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-import 'data.dart';
+import 'ds_hoc_phi_hoc_ky.dart';
 
+part 'all_tuition_fee.g.dart';
+
+@JsonSerializable()
 class AllTuitionFee extends Equatable {
-  final Data? data;
-  final bool? result;
-  final int? code;
+  @JsonKey(name: 'total_items')
+  final int? totalItems;
+  @JsonKey(name: 'total_pages')
+  final int? totalPages;
+  @JsonKey(name: 'is_tinh_tong')
+  final bool? isTinhTong;
+  @JsonKey(name: 'is_show_hoc_bong')
+  final bool? isShowHocBong;
+  @JsonKey(name: 'is_tg_dong_hoc_phi')
+  final bool? isTgDongHocPhi;
+  @JsonKey(name: 'ds_hoc_phi_hoc_ky')
+  final List<DsHocPhiHocKy>? dsHocPhiHocKy;
 
-  const AllTuitionFee({this.data, this.result, this.code});
+  const AllTuitionFee({
+    this.totalItems,
+    this.totalPages,
+    this.isTinhTong,
+    this.isShowHocBong,
+    this.isTgDongHocPhi,
+    this.dsHocPhiHocKy,
+  });
 
-  factory AllTuitionFee.fromMap(Map<String, dynamic> data) => AllTuitionFee(
-        data: data['data'] == null
-            ? null
-            : Data.fromMap(data['data'] as Map<String, dynamic>),
-        result: data['result'] as bool?,
-        code: data['code'] as int?,
-      );
-
-  Map<String, dynamic> toMap() => {
-        'data': data?.toMap(),
-        'result': result,
-        'code': code,
-      };
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [AllTuitionFee].
-  factory AllTuitionFee.fromJson(String data) {
-    return AllTuitionFee.fromMap(json.decode(data) as Map<String, dynamic>);
+  factory AllTuitionFee.fromJson(Map<String, dynamic> json) {
+    return _$AllTuitionFeeFromJson(json);
   }
 
-  /// `dart:convert`
-  ///
-  /// Converts [AllTuitionFee] to a JSON string.
-  String toJson() => json.encode(toMap());
+  Map<String, dynamic> toJson() => _$AllTuitionFeeToJson(this);
 
   AllTuitionFee copyWith({
-    Data? data,
-    bool? result,
-    int? code,
+    int? totalItems,
+    int? totalPages,
+    bool? isTinhTong,
+    bool? isShowHocBong,
+    bool? isTgDongHocPhi,
+    List<DsHocPhiHocKy>? dsHocPhiHocKy,
   }) {
     return AllTuitionFee(
-      data: data ?? this.data,
-      result: result ?? this.result,
-      code: code ?? this.code,
+      totalItems: totalItems ?? this.totalItems,
+      totalPages: totalPages ?? this.totalPages,
+      isTinhTong: isTinhTong ?? this.isTinhTong,
+      isShowHocBong: isShowHocBong ?? this.isShowHocBong,
+      isTgDongHocPhi: isTgDongHocPhi ?? this.isTgDongHocPhi,
+      dsHocPhiHocKy: dsHocPhiHocKy ?? this.dsHocPhiHocKy,
     );
   }
 
   @override
-  List<Object?> get props => [data, result, code];
+  List<Object?> get props {
+    return [
+      totalItems,
+      totalPages,
+      isTinhTong,
+      isShowHocBong,
+      isTgDongHocPhi,
+      dsHocPhiHocKy,
+    ];
+  }
 }

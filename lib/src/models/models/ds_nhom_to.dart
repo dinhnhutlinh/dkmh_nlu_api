@@ -1,36 +1,59 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'ds_nhom_to.g.dart';
+
+@JsonSerializable()
 class DsNhomTo extends Equatable {
+  @JsonKey(name: 'id_to_hoc')
   final String? idToHoc;
+  @JsonKey(name: 'id_mon')
   final String? idMon;
+  @JsonKey(name: 'ma_mon')
   final String? maMon;
+  @JsonKey(name: 'ten_mon')
   final String? tenMon;
+  @JsonKey(name: 'so_tc')
   final String? soTc;
+  @JsonKey(name: 'so_tc_so')
   final int? soTcSo;
+  @JsonKey(name: 'is_vuot')
   final bool? isVuot;
+  @JsonKey(name: 'nhom_to')
   final String? nhomTo;
   final String? lop;
+  @JsonKey(name: 'is_kdk')
   final bool? isKdk;
+  @JsonKey(name: 'sl_dk')
   final int? slDk;
+  @JsonKey(name: 'sl_cp')
   final int? slCp;
+  @JsonKey(name: 'sl_cl')
   final int? slCl;
   final String? tkb;
+  @JsonKey(name: 'is_hl')
   final bool? isHl;
   final bool? enable;
   final bool? hauk;
+  @JsonKey(name: 'is_dk')
   final bool? isDk;
+  @JsonKey(name: 'is_rot')
   final bool? isRot;
+  @JsonKey(name: 'is_ctdt')
   final bool? isCtdt;
+  @JsonKey(name: 'is_chctdt')
   final bool? isChctdt;
+  @JsonKey(name: 'is_kg_lt')
   final bool? isKgLt;
   final int? thu;
   final int? tbd;
+  @JsonKey(name: 'so_tiet')
   final int? soTiet;
+  @JsonKey(name: 'den_gio')
   final String? denGio;
   final String? phong;
   final String? gv;
+  @JsonKey(name: 'gc_to_hoc')
   final String? gcToHoc;
 
   const DsNhomTo({
@@ -65,81 +88,11 @@ class DsNhomTo extends Equatable {
     this.gcToHoc,
   });
 
-  factory DsNhomTo.fromMap(Map<String, dynamic> data) => DsNhomTo(
-        idToHoc: data['id_to_hoc'] as String?,
-        idMon: data['id_mon'] as String?,
-        maMon: data['ma_mon'] as String?,
-        tenMon: data['ten_mon'] as String?,
-        soTc: data['so_tc'] as String?,
-        soTcSo: data['so_tc_so'] as int?,
-        isVuot: data['is_vuot'] as bool?,
-        nhomTo: data['nhom_to'] as String?,
-        lop: data['lop'] as String?,
-        isKdk: data['is_kdk'] as bool?,
-        slDk: data['sl_dk'] as int?,
-        slCp: data['sl_cp'] as int?,
-        slCl: data['sl_cl'] as int?,
-        tkb: data['tkb'] as String?,
-        isHl: data['is_hl'] as bool?,
-        enable: data['enable'] as bool?,
-        hauk: data['hauk'] as bool?,
-        isDk: data['is_dk'] as bool?,
-        isRot: data['is_rot'] as bool?,
-        isCtdt: data['is_ctdt'] as bool?,
-        isChctdt: data['is_chctdt'] as bool?,
-        isKgLt: data['is_kg_lt'] as bool?,
-        thu: data['thu'] as int?,
-        tbd: data['tbd'] as int?,
-        soTiet: data['so_tiet'] as int?,
-        denGio: data['den_gio'] as String?,
-        phong: data['phong'] as String?,
-        gv: data['gv'] as String?,
-        gcToHoc: data['gc_to_hoc'] as String?,
-      );
-
-  Map<String, dynamic> toMap() => {
-        'id_to_hoc': idToHoc,
-        'id_mon': idMon,
-        'ma_mon': maMon,
-        'ten_mon': tenMon,
-        'so_tc': soTc,
-        'so_tc_so': soTcSo,
-        'is_vuot': isVuot,
-        'nhom_to': nhomTo,
-        'lop': lop,
-        'is_kdk': isKdk,
-        'sl_dk': slDk,
-        'sl_cp': slCp,
-        'sl_cl': slCl,
-        'tkb': tkb,
-        'is_hl': isHl,
-        'enable': enable,
-        'hauk': hauk,
-        'is_dk': isDk,
-        'is_rot': isRot,
-        'is_ctdt': isCtdt,
-        'is_chctdt': isChctdt,
-        'is_kg_lt': isKgLt,
-        'thu': thu,
-        'tbd': tbd,
-        'so_tiet': soTiet,
-        'den_gio': denGio,
-        'phong': phong,
-        'gv': gv,
-        'gc_to_hoc': gcToHoc,
-      };
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [DsNhomTo].
-  factory DsNhomTo.fromJson(String data) {
-    return DsNhomTo.fromMap(json.decode(data) as Map<String, dynamic>);
+  factory DsNhomTo.fromJson(Map<String, dynamic> json) {
+    return _$DsNhomToFromJson(json);
   }
 
-  /// `dart:convert`
-  ///
-  /// Converts [DsNhomTo] to a JSON string.
-  String toJson() => json.encode(toMap());
+  Map<String, dynamic> toJson() => _$DsNhomToToJson(this);
 
   DsNhomTo copyWith({
     String? idToHoc,

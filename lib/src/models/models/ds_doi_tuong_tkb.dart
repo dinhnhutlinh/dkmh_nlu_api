@@ -1,34 +1,22 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'ds_doi_tuong_tkb.g.dart';
+
+@JsonSerializable()
 class DsDoiTuongTkb extends Equatable {
+  @JsonKey(name: 'loai_doi_tuong')
   final int? loaiDoiTuong;
+  @JsonKey(name: 'ten_doi_tuong')
   final String? tenDoiTuong;
 
   const DsDoiTuongTkb({this.loaiDoiTuong, this.tenDoiTuong});
 
-  factory DsDoiTuongTkb.fromMap(Map<String, dynamic> data) => DsDoiTuongTkb(
-        loaiDoiTuong: data['loai_doi_tuong'] as int?,
-        tenDoiTuong: data['ten_doi_tuong'] as String?,
-      );
-
-  Map<String, dynamic> toMap() => {
-        'loai_doi_tuong': loaiDoiTuong,
-        'ten_doi_tuong': tenDoiTuong,
-      };
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [DsDoiTuongTkb].
-  factory DsDoiTuongTkb.fromJson(String data) {
-    return DsDoiTuongTkb.fromMap(json.decode(data) as Map<String, dynamic>);
+  factory DsDoiTuongTkb.fromJson(Map<String, dynamic> json) {
+    return _$DsDoiTuongTkbFromJson(json);
   }
 
-  /// `dart:convert`
-  ///
-  /// Converts [DsDoiTuongTkb] to a JSON string.
-  String toJson() => json.encode(toMap());
+  Map<String, dynamic> toJson() => _$DsDoiTuongTkbToJson(this);
 
   DsDoiTuongTkb copyWith({
     int? loaiDoiTuong,

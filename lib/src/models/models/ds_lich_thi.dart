@@ -1,32 +1,57 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 import 'ds_diem_mon_hoc.dart';
 
+part 'ds_lich_thi.g.dart';
+
+@JsonSerializable()
 class DsLichThi extends Equatable {
+  @JsonKey(name: 'so_thu_tu')
   final int? soThuTu;
+  @JsonKey(name: 'ky_thi')
   final String? kyThi;
+  @JsonKey(name: 'dot_thi')
   final String? dotThi;
+  @JsonKey(name: 'ma_mon')
   final String? maMon;
+  @JsonKey(name: 'ten_mon')
   final String? tenMon;
+  @JsonKey(name: 'ma_phong')
   final String? maPhong;
+  @JsonKey(name: 'ma_co_so')
   final String? maCoSo;
+  @JsonKey(name: 'ngay_thi')
   final String? ngayThi;
+  @JsonKey(name: 'tiet_bat_dau')
   final String? tietBatDau;
+  @JsonKey(name: 'so_tiet')
   final String? soTiet;
+  @JsonKey(name: 'gio_bat_dau')
   final String? gioBatDau;
+  @JsonKey(name: 'so_phut')
   final String? soPhut;
+  @JsonKey(name: 'hinh_thuc_thi')
   final String? hinhThucThi;
+  @JsonKey(name: 'ghi_chu_sv')
   final String? ghiChuSv;
+  @JsonKey(name: 'ghep_thi')
   final String? ghepThi;
+  @JsonKey(name: 'to_thi')
   final String? toThi;
+  @JsonKey(name: 'nhom_thi')
   final String? nhomThi;
+  @JsonKey(name: 'ghep_phong')
   final String? ghepPhong;
+  @JsonKey(name: 'ghi_chu_htt')
   final String? ghiChuHtt;
+  @JsonKey(name: 'si_so')
   final int? siSo;
+  @JsonKey(name: 'xem_dssv')
   final String? xemDssv;
+  @JsonKey(name: 'dia_diem_thi')
   final String? diaDiemThi;
+  @JsonKey(name: 'ds_diem_mon_hoc')
   final List<DsDiemMonHoc>? dsDiemMonHoc;
 
   const DsLichThi({
@@ -55,71 +80,11 @@ class DsLichThi extends Equatable {
     this.dsDiemMonHoc,
   });
 
-  factory DsLichThi.fromMap(Map<String, dynamic> data) => DsLichThi(
-        soThuTu: data['so_thu_tu'] as int?,
-        kyThi: data['ky_thi'] as String?,
-        dotThi: data['dot_thi'] as String?,
-        maMon: data['ma_mon'] as String?,
-        tenMon: data['ten_mon'] as String?,
-        maPhong: data['ma_phong'] as String?,
-        maCoSo: data['ma_co_so'] as String?,
-        ngayThi: data['ngay_thi'] as String?,
-        tietBatDau: data['tiet_bat_dau'] as String?,
-        soTiet: data['so_tiet'] as String?,
-        gioBatDau: data['gio_bat_dau'] as String?,
-        soPhut: data['so_phut'] as String?,
-        hinhThucThi: data['hinh_thuc_thi'] as String?,
-        ghiChuSv: data['ghi_chu_sv'] as String?,
-        ghepThi: data['ghep_thi'] as String?,
-        toThi: data['to_thi'] as String?,
-        nhomThi: data['nhom_thi'] as String?,
-        ghepPhong: data['ghep_phong'] as String?,
-        ghiChuHtt: data['ghi_chu_htt'] as String?,
-        siSo: data['si_so'] as int?,
-        xemDssv: data['xem_dssv'] as String?,
-        diaDiemThi: data['dia_diem_thi'] as String?,
-        dsDiemMonHoc: (data['ds_diem_mon_hoc'] as List<dynamic>?)
-            ?.map((e) => DsDiemMonHoc.fromMap(e as Map<String, dynamic>))
-            .toList(),
-      );
-
-  Map<String, dynamic> toMap() => {
-        'so_thu_tu': soThuTu,
-        'ky_thi': kyThi,
-        'dot_thi': dotThi,
-        'ma_mon': maMon,
-        'ten_mon': tenMon,
-        'ma_phong': maPhong,
-        'ma_co_so': maCoSo,
-        'ngay_thi': ngayThi,
-        'tiet_bat_dau': tietBatDau,
-        'so_tiet': soTiet,
-        'gio_bat_dau': gioBatDau,
-        'so_phut': soPhut,
-        'hinh_thuc_thi': hinhThucThi,
-        'ghi_chu_sv': ghiChuSv,
-        'ghep_thi': ghepThi,
-        'to_thi': toThi,
-        'nhom_thi': nhomThi,
-        'ghep_phong': ghepPhong,
-        'ghi_chu_htt': ghiChuHtt,
-        'si_so': siSo,
-        'xem_dssv': xemDssv,
-        'dia_diem_thi': diaDiemThi,
-        'ds_diem_mon_hoc': dsDiemMonHoc?.map((e) => e.toMap()).toList(),
-      };
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [DsLichThi].
-  factory DsLichThi.fromJson(String data) {
-    return DsLichThi.fromMap(json.decode(data) as Map<String, dynamic>);
+  factory DsLichThi.fromJson(Map<String, dynamic> json) {
+    return _$DsLichThiFromJson(json);
   }
 
-  /// `dart:convert`
-  ///
-  /// Converts [DsLichThi] to a JSON string.
-  String toJson() => json.encode(toMap());
+  Map<String, dynamic> toJson() => _$DsLichThiToJson(this);
 
   DsLichThi copyWith({
     int? soThuTu,

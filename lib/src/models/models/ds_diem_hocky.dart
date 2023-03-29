@@ -1,21 +1,35 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 import 'ds_diem_mon_hoc.dart';
 
+part 'ds_diem_hocky.g.dart';
+
+@JsonSerializable()
 class DsDiemHocky extends Equatable {
+  @JsonKey(name: 'loai_nganh')
   final int? loaiNganh;
+  @JsonKey(name: 'hoc_ky')
   final String? hocKy;
+  @JsonKey(name: 'ten_hoc_ky')
   final String? tenHocKy;
+  @JsonKey(name: 'dtb_hk_he10')
   final String? dtbHkHe10;
+  @JsonKey(name: 'dtb_hk_he4')
   final String? dtbHkHe4;
+  @JsonKey(name: 'dtb_tich_luy_he_10')
   final String? dtbTichLuyHe10;
+  @JsonKey(name: 'dtb_tich_luy_he_4')
   final String? dtbTichLuyHe4;
+  @JsonKey(name: 'so_tin_chi_dat_hk')
   final String? soTinChiDatHk;
+  @JsonKey(name: 'so_tin_chi_dat_tich_luy')
   final String? soTinChiDatTichLuy;
+  @JsonKey(name: 'hien_thi_tk_he_10')
   final bool? hienThiTkHe10;
+  @JsonKey(name: 'hien_thi_tk_he_4')
   final bool? hienThiTkHe4;
+  @JsonKey(name: 'ds_diem_mon_hoc')
   final List<DsDiemMonHoc>? dsDiemMonHoc;
 
   const DsDiemHocky({
@@ -33,49 +47,11 @@ class DsDiemHocky extends Equatable {
     this.dsDiemMonHoc,
   });
 
-  factory DsDiemHocky.fromMap(Map<String, dynamic> data) => DsDiemHocky(
-        loaiNganh: data['loai_nganh'] as int?,
-        hocKy: data['hoc_ky'] as String?,
-        tenHocKy: data['ten_hoc_ky'] as String?,
-        dtbHkHe10: data['dtb_hk_he10'] as String?,
-        dtbHkHe4: data['dtb_hk_he4'] as String?,
-        dtbTichLuyHe10: data['dtb_tich_luy_he_10'] as String?,
-        dtbTichLuyHe4: data['dtb_tich_luy_he_4'] as String?,
-        soTinChiDatHk: data['so_tin_chi_dat_hk'] as String?,
-        soTinChiDatTichLuy: data['so_tin_chi_dat_tich_luy'] as String?,
-        hienThiTkHe10: data['hien_thi_tk_he_10'] as bool?,
-        hienThiTkHe4: data['hien_thi_tk_he_4'] as bool?,
-        dsDiemMonHoc: (data['ds_diem_mon_hoc'] as List<dynamic>?)
-            ?.map((e) => DsDiemMonHoc.fromMap(e as Map<String, dynamic>))
-            .toList(),
-      );
-
-  Map<String, dynamic> toMap() => {
-        'loai_nganh': loaiNganh,
-        'hoc_ky': hocKy,
-        'ten_hoc_ky': tenHocKy,
-        'dtb_hk_he10': dtbHkHe10,
-        'dtb_hk_he4': dtbHkHe4,
-        'dtb_tich_luy_he_10': dtbTichLuyHe10,
-        'dtb_tich_luy_he_4': dtbTichLuyHe4,
-        'so_tin_chi_dat_hk': soTinChiDatHk,
-        'so_tin_chi_dat_tich_luy': soTinChiDatTichLuy,
-        'hien_thi_tk_he_10': hienThiTkHe10,
-        'hien_thi_tk_he_4': hienThiTkHe4,
-        'ds_diem_mon_hoc': dsDiemMonHoc?.map((e) => e.toMap()).toList(),
-      };
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [DsDiemHocky].
-  factory DsDiemHocky.fromJson(String data) {
-    return DsDiemHocky.fromMap(json.decode(data) as Map<String, dynamic>);
+  factory DsDiemHocky.fromJson(Map<String, dynamic> json) {
+    return _$DsDiemHockyFromJson(json);
   }
 
-  /// `dart:convert`
-  ///
-  /// Converts [DsDiemHocky] to a JSON string.
-  String toJson() => json.encode(toMap());
+  Map<String, dynamic> toJson() => _$DsDiemHockyToJson(this);
 
   DsDiemHocky copyWith({
     int? loaiNganh,

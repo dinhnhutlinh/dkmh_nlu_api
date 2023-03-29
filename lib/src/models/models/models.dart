@@ -1,35 +1,21 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 import 'model.dart';
 
+part 'models.g.dart';
+
+@JsonSerializable()
 class Models extends Equatable {
   final List<Model>? models;
 
   const Models({this.models});
 
-  factory Models.fromMap(Map<String, dynamic> data) => Models(
-        models: (data['models'] as List<dynamic>?)
-            ?.map((e) => Model.fromMap(e as Map<String, dynamic>))
-            .toList(),
-      );
-
-  Map<String, dynamic> toMap() => {
-        'models': models?.map((e) => e.toMap()).toList(),
-      };
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [Models].
-  factory Models.fromJson(String data) {
-    return Models.fromMap(json.decode(data) as Map<String, dynamic>);
+  factory Models.fromJson(Map<String, dynamic> json) {
+    return _$ModelsFromJson(json);
   }
 
-  /// `dart:convert`
-  ///
-  /// Converts [Models] to a JSON string.
-  String toJson() => json.encode(toMap());
+  Map<String, dynamic> toJson() => _$ModelsToJson(this);
 
   Models copyWith({
     List<Model>? models,

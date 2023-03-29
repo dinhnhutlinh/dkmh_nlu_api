@@ -1,56 +1,39 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-import 'data.dart';
+import 'ds_hoc_ky.dart';
 
+part 'list_tuition_fee.g.dart';
+
+@JsonSerializable()
 class ListTuitionFee extends Equatable {
-  final Data? data;
-  final bool? result;
-  final int? code;
+  @JsonKey(name: 'total_items')
+  final int? totalItems;
+  @JsonKey(name: 'total_pages')
+  final int? totalPages;
+  @JsonKey(name: 'ds_hoc_ky')
+  final List<DsHocKy>? dsHocKy;
 
-  const ListTuitionFee({this.data, this.result, this.code});
+  const ListTuitionFee({this.totalItems, this.totalPages, this.dsHocKy});
 
-  factory ListTuitionFee.fromMap(Map<String, dynamic> data) {
-    return ListTuitionFee(
-      data: data['data'] == null
-          ? null
-          : Data.fromMap(data['data'] as Map<String, dynamic>),
-      result: data['result'] as bool?,
-      code: data['code'] as int?,
-    );
+  factory ListTuitionFee.fromJson(Map<String, dynamic> json) {
+    return _$ListTuitionFeeFromJson(json);
   }
 
-  Map<String, dynamic> toMap() => {
-        'data': data?.toMap(),
-        'result': result,
-        'code': code,
-      };
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [ListTuitionFee].
-  factory ListTuitionFee.fromJson(String data) {
-    return ListTuitionFee.fromMap(json.decode(data) as Map<String, dynamic>);
-  }
-
-  /// `dart:convert`
-  ///
-  /// Converts [ListTuitionFee] to a JSON string.
-  String toJson() => json.encode(toMap());
+  Map<String, dynamic> toJson() => _$ListTuitionFeeToJson(this);
 
   ListTuitionFee copyWith({
-    Data? data,
-    bool? result,
-    int? code,
+    int? totalItems,
+    int? totalPages,
+    List<DsHocKy>? dsHocKy,
   }) {
     return ListTuitionFee(
-      data: data ?? this.data,
-      result: result ?? this.result,
-      code: code ?? this.code,
+      totalItems: totalItems ?? this.totalItems,
+      totalPages: totalPages ?? this.totalPages,
+      dsHocKy: dsHocKy ?? this.dsHocKy,
     );
   }
 
   @override
-  List<Object?> get props => [data, result, code];
+  List<Object?> get props => [totalItems, totalPages, dsHocKy];
 }

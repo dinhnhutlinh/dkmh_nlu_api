@@ -1,57 +1,43 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-import 'data.dart';
+import 'ds_hoc_ky.dart';
 
+part 'list_time_table_semester.g.dart';
+
+@JsonSerializable()
 class ListTimeTableSemester extends Equatable {
-  final Data? data;
-  final bool? result;
-  final int? code;
+  @JsonKey(name: 'total_items')
+  final int? totalItems;
+  @JsonKey(name: 'total_pages')
+  final int? totalPages;
+  @JsonKey(name: 'ds_hoc_ky')
+  final List<DsHocKy>? dsHocKy;
 
-  const ListTimeTableSemester({this.data, this.result, this.code});
+  const ListTimeTableSemester({
+    this.totalItems,
+    this.totalPages,
+    this.dsHocKy,
+  });
 
-  factory ListTimeTableSemester.fromMap(Map<String, dynamic> data) {
-    return ListTimeTableSemester(
-      data: data['data'] == null
-          ? null
-          : Data.fromMap(data['data'] as Map<String, dynamic>),
-      result: data['result'] as bool?,
-      code: data['code'] as int?,
-    );
+  factory ListTimeTableSemester.fromJson(Map<String, dynamic> json) {
+    return _$ListTimeTableSemesterFromJson(json);
   }
 
-  Map<String, dynamic> toMap() => {
-        'data': data?.toMap(),
-        'result': result,
-        'code': code,
-      };
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [ListTimeTableSemester].
-  factory ListTimeTableSemester.fromJson(String data) {
-    return ListTimeTableSemester.fromMap(
-        json.decode(data) as Map<String, dynamic>);
-  }
-
-  /// `dart:convert`
-  ///
-  /// Converts [ListTimeTableSemester] to a JSON string.
-  String toJson() => json.encode(toMap());
+  Map<String, dynamic> toJson() => _$ListTimeTableSemesterToJson(this);
 
   ListTimeTableSemester copyWith({
-    Data? data,
-    bool? result,
-    int? code,
+    int? totalItems,
+    int? totalPages,
+    List<DsHocKy>? dsHocKy,
   }) {
     return ListTimeTableSemester(
-      data: data ?? this.data,
-      result: result ?? this.result,
-      code: code ?? this.code,
+      totalItems: totalItems ?? this.totalItems,
+      totalPages: totalPages ?? this.totalPages,
+      dsHocKy: dsHocKy ?? this.dsHocKy,
     );
   }
 
   @override
-  List<Object?> get props => [data, result, code];
+  List<Object?> get props => [totalItems, totalPages, dsHocKy];
 }

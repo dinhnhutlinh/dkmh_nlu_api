@@ -1,10 +1,14 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'ds_tiet_trong_ngay.g.dart';
+
+@JsonSerializable()
 class DsTietTrongNgay extends Equatable {
   final int? tiet;
+  @JsonKey(name: 'gio_bat_dau')
   final String? gioBatDau;
+  @JsonKey(name: 'so_phut')
   final int? soPhut;
   final int? nhhk;
 
@@ -15,33 +19,11 @@ class DsTietTrongNgay extends Equatable {
     this.nhhk,
   });
 
-  factory DsTietTrongNgay.fromMap(Map<String, dynamic> data) {
-    return DsTietTrongNgay(
-      tiet: data['tiet'] as int?,
-      gioBatDau: data['gio_bat_dau'] as String?,
-      soPhut: data['so_phut'] as int?,
-      nhhk: data['nhhk'] as int?,
-    );
+  factory DsTietTrongNgay.fromJson(Map<String, dynamic> json) {
+    return _$DsTietTrongNgayFromJson(json);
   }
 
-  Map<String, dynamic> toMap() => {
-        'tiet': tiet,
-        'gio_bat_dau': gioBatDau,
-        'so_phut': soPhut,
-        'nhhk': nhhk,
-      };
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [DsTietTrongNgay].
-  factory DsTietTrongNgay.fromJson(String data) {
-    return DsTietTrongNgay.fromMap(json.decode(data) as Map<String, dynamic>);
-  }
-
-  /// `dart:convert`
-  ///
-  /// Converts [DsTietTrongNgay] to a JSON string.
-  String toJson() => json.encode(toMap());
+  Map<String, dynamic> toJson() => _$DsTietTrongNgayToJson(this);
 
   DsTietTrongNgay copyWith({
     int? tiet,

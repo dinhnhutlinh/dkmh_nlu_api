@@ -1,0 +1,71 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'ds_nhom_to.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+DsNhomTo _$DsNhomToFromJson(Map<String, dynamic> json) => DsNhomTo(
+      idToHoc: json['id_to_hoc'] as String?,
+      idMon: json['id_mon'] as String?,
+      maMon: json['ma_mon'] as String?,
+      tenMon: json['ten_mon'] as String?,
+      soTc: json['so_tc'] as String?,
+      soTcSo: json['so_tc_so'] as int?,
+      isVuot: json['is_vuot'] as bool?,
+      nhomTo: json['nhom_to'] as String?,
+      lop: json['lop'] as String?,
+      isKdk: json['is_kdk'] as bool?,
+      slDk: json['sl_dk'] as int?,
+      slCp: json['sl_cp'] as int?,
+      slCl: json['sl_cl'] as int?,
+      tkb: json['tkb'] as String?,
+      isHl: json['is_hl'] as bool?,
+      enable: json['enable'] as bool?,
+      hauk: json['hauk'] as bool?,
+      isDk: json['is_dk'] as bool?,
+      isRot: json['is_rot'] as bool?,
+      isCtdt: json['is_ctdt'] as bool?,
+      isChctdt: json['is_chctdt'] as bool?,
+      isKgLt: json['is_kg_lt'] as bool?,
+      thu: json['thu'] as int?,
+      tbd: json['tbd'] as int?,
+      soTiet: json['so_tiet'] as int?,
+      denGio: json['den_gio'] as String?,
+      phong: json['phong'] as String?,
+      gv: json['gv'] as String?,
+      gcToHoc: json['gc_to_hoc'] as String?,
+    );
+
+Map<String, dynamic> _$DsNhomToToJson(DsNhomTo instance) => <String, dynamic>{
+      'id_to_hoc': instance.idToHoc,
+      'id_mon': instance.idMon,
+      'ma_mon': instance.maMon,
+      'ten_mon': instance.tenMon,
+      'so_tc': instance.soTc,
+      'so_tc_so': instance.soTcSo,
+      'is_vuot': instance.isVuot,
+      'nhom_to': instance.nhomTo,
+      'lop': instance.lop,
+      'is_kdk': instance.isKdk,
+      'sl_dk': instance.slDk,
+      'sl_cp': instance.slCp,
+      'sl_cl': instance.slCl,
+      'tkb': instance.tkb,
+      'is_hl': instance.isHl,
+      'enable': instance.enable,
+      'hauk': instance.hauk,
+      'is_dk': instance.isDk,
+      'is_rot': instance.isRot,
+      'is_ctdt': instance.isCtdt,
+      'is_chctdt': instance.isChctdt,
+      'is_kg_lt': instance.isKgLt,
+      'thu': instance.thu,
+      'tbd': instance.tbd,
+      'so_tiet': instance.soTiet,
+      'den_gio': instance.denGio,
+      'phong': instance.phong,
+      'gv': instance.gv,
+      'gc_to_hoc': instance.gcToHoc,
+    };

@@ -1,34 +1,21 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'ds_field_an.g.dart';
+
+@JsonSerializable()
 class DsFieldAn extends Equatable {
+  @JsonKey(name: 'ten_field')
   final String? tenField;
   final bool? enable;
 
   const DsFieldAn({this.tenField, this.enable});
 
-  factory DsFieldAn.fromMap(Map<String, dynamic> data) => DsFieldAn(
-        tenField: data['ten_field'] as String?,
-        enable: data['enable'] as bool?,
-      );
-
-  Map<String, dynamic> toMap() => {
-        'ten_field': tenField,
-        'enable': enable,
-      };
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [DsFieldAn].
-  factory DsFieldAn.fromJson(String data) {
-    return DsFieldAn.fromMap(json.decode(data) as Map<String, dynamic>);
+  factory DsFieldAn.fromJson(Map<String, dynamic> json) {
+    return _$DsFieldAnFromJson(json);
   }
 
-  /// `dart:convert`
-  ///
-  /// Converts [DsFieldAn] to a JSON string.
-  String toJson() => json.encode(toMap());
+  Map<String, dynamic> toJson() => _$DsFieldAnToJson(this);
 
   DsFieldAn copyWith({
     String? tenField,

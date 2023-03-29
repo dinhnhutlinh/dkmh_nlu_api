@@ -1,62 +1,48 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-import 'data.dart';
-import 'ds_field_an.dart';
+import 'ds_lich_thi.dart';
 
+part 'test_schedule.g.dart';
+
+@JsonSerializable()
 class TestSchedule extends Equatable {
-  final Data? data;
-  final List<DsFieldAn>? dsFieldAn;
-  final bool? result;
-  final int? code;
+  @JsonKey(name: 'total_items')
+  final int? totalItems;
+  @JsonKey(name: 'total_pages')
+  final int? totalPages;
+  @JsonKey(name: 'is_DHMO')
+  final bool? isDhmo;
+  @JsonKey(name: 'ds_lich_thi')
+  final List<DsLichThi>? dsLichThi;
 
-  const TestSchedule({this.data, this.dsFieldAn, this.result, this.code});
+  const TestSchedule({
+    this.totalItems,
+    this.totalPages,
+    this.isDhmo,
+    this.dsLichThi,
+  });
 
-  factory TestSchedule.fromMap(Map<String, dynamic> data) => TestSchedule(
-        data: data['data'] == null
-            ? null
-            : Data.fromMap(data['data'] as Map<String, dynamic>),
-        dsFieldAn: (data['ds_field_an'] as List<dynamic>?)
-            ?.map((e) => DsFieldAn.fromMap(e as Map<String, dynamic>))
-            .toList(),
-        result: data['result'] as bool?,
-        code: data['code'] as int?,
-      );
-
-  Map<String, dynamic> toMap() => {
-        'data': data?.toMap(),
-        'ds_field_an': dsFieldAn?.map((e) => e.toMap()).toList(),
-        'result': result,
-        'code': code,
-      };
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [TestSchedule].
-  factory TestSchedule.fromJson(String data) {
-    return TestSchedule.fromMap(json.decode(data) as Map<String, dynamic>);
+  factory TestSchedule.fromJson(Map<String, dynamic> json) {
+    return _$TestScheduleFromJson(json);
   }
 
-  /// `dart:convert`
-  ///
-  /// Converts [TestSchedule] to a JSON string.
-  String toJson() => json.encode(toMap());
+  Map<String, dynamic> toJson() => _$TestScheduleToJson(this);
 
   TestSchedule copyWith({
-    Data? data,
-    List<DsFieldAn>? dsFieldAn,
-    bool? result,
-    int? code,
+    int? totalItems,
+    int? totalPages,
+    bool? isDhmo,
+    List<DsLichThi>? dsLichThi,
   }) {
     return TestSchedule(
-      data: data ?? this.data,
-      dsFieldAn: dsFieldAn ?? this.dsFieldAn,
-      result: result ?? this.result,
-      code: code ?? this.code,
+      totalItems: totalItems ?? this.totalItems,
+      totalPages: totalPages ?? this.totalPages,
+      isDhmo: isDhmo ?? this.isDhmo,
+      dsLichThi: dsLichThi ?? this.dsLichThi,
     );
   }
 
   @override
-  List<Object?> get props => [data, dsFieldAn, result, code];
+  List<Object?> get props => [totalItems, totalPages, isDhmo, dsLichThi];
 }

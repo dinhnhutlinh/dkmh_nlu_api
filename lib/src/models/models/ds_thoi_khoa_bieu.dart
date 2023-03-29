@@ -1,29 +1,53 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'ds_thoi_khoa_bieu.g.dart';
+
+@JsonSerializable()
 class DsThoiKhoaBieu extends Equatable {
+  @JsonKey(name: 'is_hk_lien_truoc')
   final int? isHkLienTruoc;
+  @JsonKey(name: 'thu_kieu_so')
   final int? thuKieuSo;
+  @JsonKey(name: 'tiet_bat_dau')
   final int? tietBatDau;
+  @JsonKey(name: 'so_tiet')
   final int? soTiet;
+  @JsonKey(name: 'ma_mon')
   final String? maMon;
+  @JsonKey(name: 'ten_mon')
   final String? tenMon;
+  @JsonKey(name: 'so_tin_chi')
   final String? soTinChi;
+  @JsonKey(name: 'id_to_hoc')
   final String? idToHoc;
+  @JsonKey(name: 'id_tkb')
   final String? idTkb;
+  @JsonKey(name: 'id_to_hop')
   final String? idToHop;
+  @JsonKey(name: 'ma_nhom')
   final String? maNhom;
+  @JsonKey(name: 'ma_to_th')
   final String? maToTh;
+  @JsonKey(name: 'ma_to_hop')
   final String? maToHop;
+  @JsonKey(name: 'ma_giang_vien')
   final String? maGiangVien;
+  @JsonKey(name: 'ten_giang_vien')
   final String? tenGiangVien;
+  @JsonKey(name: 'ma_lop')
   final String? maLop;
+  @JsonKey(name: 'ma_phong')
   final String? maPhong;
+  @JsonKey(name: 'ma_co_so')
   final String? maCoSo;
+  @JsonKey(name: 'ngay_hoc')
   final String? ngayHoc;
+  @JsonKey(name: 'id_tu_tao')
   final String? idTuTao;
+  @JsonKey(name: 'is_file_bai_giang')
   final bool? isFileBaiGiang;
+  @JsonKey(name: 'id_sinh_hoat')
   final String? idSinhHoat;
 
   const DsThoiKhoaBieu({
@@ -51,69 +75,11 @@ class DsThoiKhoaBieu extends Equatable {
     this.idSinhHoat,
   });
 
-  factory DsThoiKhoaBieu.fromMap(Map<String, dynamic> data) {
-    return DsThoiKhoaBieu(
-      isHkLienTruoc: data['is_hk_lien_truoc'] as int?,
-      thuKieuSo: data['thu_kieu_so'] as int?,
-      tietBatDau: data['tiet_bat_dau'] as int?,
-      soTiet: data['so_tiet'] as int?,
-      maMon: data['ma_mon'] as String?,
-      tenMon: data['ten_mon'] as String?,
-      soTinChi: data['so_tin_chi'] as String?,
-      idToHoc: data['id_to_hoc'] as String?,
-      idTkb: data['id_tkb'] as String?,
-      idToHop: data['id_to_hop'] as String?,
-      maNhom: data['ma_nhom'] as String?,
-      maToTh: data['ma_to_th'] as String?,
-      maToHop: data['ma_to_hop'] as String?,
-      maGiangVien: data['ma_giang_vien'] as String?,
-      tenGiangVien: data['ten_giang_vien'] as String?,
-      maLop: data['ma_lop'] as String?,
-      maPhong: data['ma_phong'] as String?,
-      maCoSo: data['ma_co_so'] as String?,
-      ngayHoc: data['ngay_hoc'] as String?,
-      idTuTao: data['id_tu_tao'] as String?,
-      isFileBaiGiang: data['is_file_bai_giang'] as bool?,
-      idSinhHoat: data['id_sinh_hoat'] as String?,
-    );
+  factory DsThoiKhoaBieu.fromJson(Map<String, dynamic> json) {
+    return _$DsThoiKhoaBieuFromJson(json);
   }
 
-  Map<String, dynamic> toMap() => {
-        'is_hk_lien_truoc': isHkLienTruoc,
-        'thu_kieu_so': thuKieuSo,
-        'tiet_bat_dau': tietBatDau,
-        'so_tiet': soTiet,
-        'ma_mon': maMon,
-        'ten_mon': tenMon,
-        'so_tin_chi': soTinChi,
-        'id_to_hoc': idToHoc,
-        'id_tkb': idTkb,
-        'id_to_hop': idToHop,
-        'ma_nhom': maNhom,
-        'ma_to_th': maToTh,
-        'ma_to_hop': maToHop,
-        'ma_giang_vien': maGiangVien,
-        'ten_giang_vien': tenGiangVien,
-        'ma_lop': maLop,
-        'ma_phong': maPhong,
-        'ma_co_so': maCoSo,
-        'ngay_hoc': ngayHoc,
-        'id_tu_tao': idTuTao,
-        'is_file_bai_giang': isFileBaiGiang,
-        'id_sinh_hoat': idSinhHoat,
-      };
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [DsThoiKhoaBieu].
-  factory DsThoiKhoaBieu.fromJson(String data) {
-    return DsThoiKhoaBieu.fromMap(json.decode(data) as Map<String, dynamic>);
-  }
-
-  /// `dart:convert`
-  ///
-  /// Converts [DsThoiKhoaBieu] to a JSON string.
-  String toJson() => json.encode(toMap());
+  Map<String, dynamic> toJson() => _$DsThoiKhoaBieuToJson(this);
 
   DsThoiKhoaBieu copyWith({
     int? isHkLienTruoc,

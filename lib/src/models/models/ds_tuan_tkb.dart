@@ -1,16 +1,25 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 import 'ds_thoi_khoa_bieu.dart';
 
+part 'ds_tuan_tkb.g.dart';
+
+@JsonSerializable()
 class DsTuanTkb extends Equatable {
+  @JsonKey(name: 'tuan_hoc_ky')
   final int? tuanHocKy;
+  @JsonKey(name: 'tuan_tuyet_doi')
   final int? tuanTuyetDoi;
+  @JsonKey(name: 'thong_tin_tuan')
   final String? thongTinTuan;
+  @JsonKey(name: 'ngay_bat_dau')
   final String? ngayBatDau;
+  @JsonKey(name: 'ngay_ket_thuc')
   final String? ngayKetThuc;
+  @JsonKey(name: 'ds_thoi_khoa_bieu')
   final List<DsThoiKhoaBieu>? dsThoiKhoaBieu;
+  @JsonKey(name: 'ds_id_thoi_khoa_bieu_trung')
   final List<dynamic>? dsIdThoiKhoaBieuTrung;
 
   const DsTuanTkb({
@@ -23,40 +32,11 @@ class DsTuanTkb extends Equatable {
     this.dsIdThoiKhoaBieuTrung,
   });
 
-  factory DsTuanTkb.fromMap(Map<String, dynamic> data) => DsTuanTkb(
-        tuanHocKy: data['tuan_hoc_ky'] as int?,
-        tuanTuyetDoi: data['tuan_tuyet_doi'] as int?,
-        thongTinTuan: data['thong_tin_tuan'] as String?,
-        ngayBatDau: data['ngay_bat_dau'] as String?,
-        ngayKetThuc: data['ngay_ket_thuc'] as String?,
-        dsThoiKhoaBieu: (data['ds_thoi_khoa_bieu'] as List<dynamic>?)
-            ?.map((e) => DsThoiKhoaBieu.fromMap(e as Map<String, dynamic>))
-            .toList(),
-        dsIdThoiKhoaBieuTrung:
-            data['ds_id_thoi_khoa_bieu_trung'] as List<dynamic>?,
-      );
-
-  Map<String, dynamic> toMap() => {
-        'tuan_hoc_ky': tuanHocKy,
-        'tuan_tuyet_doi': tuanTuyetDoi,
-        'thong_tin_tuan': thongTinTuan,
-        'ngay_bat_dau': ngayBatDau,
-        'ngay_ket_thuc': ngayKetThuc,
-        'ds_thoi_khoa_bieu': dsThoiKhoaBieu?.map((e) => e.toMap()).toList(),
-        'ds_id_thoi_khoa_bieu_trung': dsIdThoiKhoaBieuTrung,
-      };
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [DsTuanTkb].
-  factory DsTuanTkb.fromJson(String data) {
-    return DsTuanTkb.fromMap(json.decode(data) as Map<String, dynamic>);
+  factory DsTuanTkb.fromJson(Map<String, dynamic> json) {
+    return _$DsTuanTkbFromJson(json);
   }
 
-  /// `dart:convert`
-  ///
-  /// Converts [DsTuanTkb] to a JSON string.
-  String toJson() => json.encode(toMap());
+  Map<String, dynamic> toJson() => _$DsTuanTkbToJson(this);
 
   DsTuanTkb copyWith({
     int? tuanHocKy,

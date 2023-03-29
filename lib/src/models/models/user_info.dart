@@ -1,11 +1,17 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'user_info.g.dart';
+
+@JsonSerializable()
 class UserInfo extends Equatable {
+  @JsonKey(name: 'access_token')
   final String? accessToken;
+  @JsonKey(name: 'token_type')
   final String? tokenType;
+  @JsonKey(name: 'expires_in')
   final int? expiresIn;
+  @JsonKey(name: 'refresh_token')
   final String? refreshToken;
   final String? userName;
   final String? id;
@@ -17,7 +23,9 @@ class UserInfo extends Equatable {
   final String? principal;
   final String? roles;
   final String? wcf;
+  @JsonKey(name: '.issued')
   final String? issued;
+  @JsonKey(name: '.expires')
   final String? expires;
 
   const UserInfo({
@@ -39,55 +47,11 @@ class UserInfo extends Equatable {
     this.expires,
   });
 
-  factory UserInfo.fromMap(Map<String, dynamic> data) => UserInfo(
-        accessToken: data['access_token'] as String?,
-        tokenType: data['token_type'] as String?,
-        expiresIn: data['expires_in'] as int?,
-        refreshToken: data['refresh_token'] as String?,
-        userName: data['userName'] as String?,
-        id: data['id'] as String?,
-        logtime: data['logtime'] as String?,
-        code: data['code'] as String?,
-        result: data['result'] as String?,
-        passtype: data['passtype'] as String?,
-        name: data['name'] as String?,
-        principal: data['principal'] as String?,
-        roles: data['roles'] as String?,
-        wcf: data['wcf'] as String?,
-        issued: data['.issued'] as String?,
-        expires: data['.expires'] as String?,
-      );
-
-  Map<String, dynamic> toMap() => {
-        'access_token': accessToken,
-        'token_type': tokenType,
-        'expires_in': expiresIn,
-        'refresh_token': refreshToken,
-        'userName': userName,
-        'id': id,
-        'logtime': logtime,
-        'code': code,
-        'result': result,
-        'passtype': passtype,
-        'name': name,
-        'principal': principal,
-        'roles': roles,
-        'wcf': wcf,
-        '.issued': issued,
-        '.expires': expires,
-      };
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [UserInfo].
-  factory UserInfo.fromJson(String data) {
-    return UserInfo.fromMap(json.decode(data) as Map<String, dynamic>);
+  factory UserInfo.fromJson(Map<String, dynamic> json) {
+    return _$UserInfoFromJson(json);
   }
 
-  /// `dart:convert`
-  ///
-  /// Converts [UserInfo] to a JSON string.
-  String toJson() => json.encode(toMap());
+  Map<String, dynamic> toJson() => _$UserInfoToJson(this);
 
   UserInfo copyWith({
     String? accessToken,

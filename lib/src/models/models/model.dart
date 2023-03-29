@@ -1,9 +1,9 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 import 'all_tuition_fee.dart';
 import 'detail_tuition_fee.dart';
+import 'ds_field_an.dart';
 import 'facultys.dart';
 import 'list_test_score.dart';
 import 'list_time_table.dart';
@@ -20,23 +20,42 @@ import 'time_table_in_week.dart';
 import 'time_table_person.dart';
 import 'user_info.dart';
 
+part 'model.g.dart';
+
+@JsonSerializable()
 class Model extends Equatable {
+  @JsonKey(name: 'user_info')
   final UserInfo? userInfo;
+  @JsonKey(name: 'student_info')
   final StudentInfo? studentInfo;
   final Notifications? notifications;
+  @JsonKey(name: 'list_tuition_fee')
   final ListTuitionFee? listTuitionFee;
+  @JsonKey(name: 'all_tuition_fee')
   final AllTuitionFee? allTuitionFee;
+  @JsonKey(name: 'detail_tuition_fee')
   final DetailTuitionFee? detailTuitionFee;
+  @JsonKey(name: 'list_time_table_semester')
   final ListTimeTableSemester? listTimeTableSemester;
+  @JsonKey(name: 'options_time_table')
   final OptionsTimeTable? optionsTimeTable;
+  @JsonKey(name: 'time_table_in_week')
   final TimeTableInWeek? timeTableInWeek;
+  @JsonKey(name: 'time_table_by_persion')
   final TimeTableByPersion? timeTableByPersion;
+  @JsonKey(name: 'list_time_table')
   final ListTimeTable? listTimeTable;
   final Facultys? facultys;
+  @JsonKey(name: 'time_table_person')
   final TimeTablePerson? timeTablePerson;
   final Subjects? subjects;
+  @JsonKey(name: 'list_test_score')
   final ListTestScore? listTestScore;
+  @JsonKey(name: 'test_schedule')
   final TestSchedule? testSchedule;
+  @JsonKey(name: 'ds_field_an')
+  final List<DsFieldAn>? dsFieldAn;
+  @JsonKey(name: 'test_score')
   final TestScore? testScore;
 
   const Model({
@@ -56,106 +75,13 @@ class Model extends Equatable {
     this.subjects,
     this.listTestScore,
     this.testSchedule,
+    this.dsFieldAn,
     this.testScore,
   });
 
-  factory Model.fromMap(Map<String, dynamic> data) => Model(
-        userInfo: data['user_info'] == null
-            ? null
-            : UserInfo.fromMap(data['user_info'] as Map<String, dynamic>),
-        studentInfo: data['student_info'] == null
-            ? null
-            : StudentInfo.fromMap(data['student_info'] as Map<String, dynamic>),
-        notifications: data['notifications'] == null
-            ? null
-            : Notifications.fromMap(
-                data['notifications'] as Map<String, dynamic>),
-        listTuitionFee: data['list_tuition_fee'] == null
-            ? null
-            : ListTuitionFee.fromMap(
-                data['list_tuition_fee'] as Map<String, dynamic>),
-        allTuitionFee: data['all_tuition_fee'] == null
-            ? null
-            : AllTuitionFee.fromMap(
-                data['all_tuition_fee'] as Map<String, dynamic>),
-        detailTuitionFee: data['detail_tuition_fee'] == null
-            ? null
-            : DetailTuitionFee.fromMap(
-                data['detail_tuition_fee'] as Map<String, dynamic>),
-        listTimeTableSemester: data['list_time_table_semester'] == null
-            ? null
-            : ListTimeTableSemester.fromMap(
-                data['list_time_table_semester'] as Map<String, dynamic>),
-        optionsTimeTable: data['options_time_table'] == null
-            ? null
-            : OptionsTimeTable.fromMap(
-                data['options_time_table'] as Map<String, dynamic>),
-        timeTableInWeek: data['time_table_in_week'] == null
-            ? null
-            : TimeTableInWeek.fromMap(
-                data['time_table_in_week'] as Map<String, dynamic>),
-        timeTableByPersion: data['time_table_by_persion'] == null
-            ? null
-            : TimeTableByPersion.fromMap(
-                data['time_table_by_persion'] as Map<String, dynamic>),
-        listTimeTable: data['list_time_table'] == null
-            ? null
-            : ListTimeTable.fromMap(
-                data['list_time_table'] as Map<String, dynamic>),
-        facultys: data['facultys'] == null
-            ? null
-            : Facultys.fromMap(data['facultys'] as Map<String, dynamic>),
-        timeTablePerson: data['time_table_person'] == null
-            ? null
-            : TimeTablePerson.fromMap(
-                data['time_table_person'] as Map<String, dynamic>),
-        subjects: data['subjects'] == null
-            ? null
-            : Subjects.fromMap(data['subjects'] as Map<String, dynamic>),
-        listTestScore: data['list_test_score'] == null
-            ? null
-            : ListTestScore.fromMap(
-                data['list_test_score'] as Map<String, dynamic>),
-        testSchedule: data['test_schedule'] == null
-            ? null
-            : TestSchedule.fromMap(
-                data['test_schedule'] as Map<String, dynamic>),
-        testScore: data['test_score'] == null
-            ? null
-            : TestScore.fromMap(data['test_score'] as Map<String, dynamic>),
-      );
+  factory Model.fromJson(Map<String, dynamic> json) => _$ModelFromJson(json);
 
-  Map<String, dynamic> toMap() => {
-        'user_info': userInfo?.toMap(),
-        'student_info': studentInfo?.toMap(),
-        'notifications': notifications?.toMap(),
-        'list_tuition_fee': listTuitionFee?.toMap(),
-        'all_tuition_fee': allTuitionFee?.toMap(),
-        'detail_tuition_fee': detailTuitionFee?.toMap(),
-        'list_time_table_semester': listTimeTableSemester?.toMap(),
-        'options_time_table': optionsTimeTable?.toMap(),
-        'time_table_in_week': timeTableInWeek?.toMap(),
-        'time_table_by_persion': timeTableByPersion?.toMap(),
-        'list_time_table': listTimeTable?.toMap(),
-        'facultys': facultys?.toMap(),
-        'time_table_person': timeTablePerson?.toMap(),
-        'subjects': subjects?.toMap(),
-        'list_test_score': listTestScore?.toMap(),
-        'test_schedule': testSchedule?.toMap(),
-        'test_score': testScore?.toMap(),
-      };
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [Model].
-  factory Model.fromJson(String data) {
-    return Model.fromMap(json.decode(data) as Map<String, dynamic>);
-  }
-
-  /// `dart:convert`
-  ///
-  /// Converts [Model] to a JSON string.
-  String toJson() => json.encode(toMap());
+  Map<String, dynamic> toJson() => _$ModelToJson(this);
 
   Model copyWith({
     UserInfo? userInfo,
@@ -174,6 +100,7 @@ class Model extends Equatable {
     Subjects? subjects,
     ListTestScore? listTestScore,
     TestSchedule? testSchedule,
+    List<DsFieldAn>? dsFieldAn,
     TestScore? testScore,
   }) {
     return Model(
@@ -194,6 +121,7 @@ class Model extends Equatable {
       subjects: subjects ?? this.subjects,
       listTestScore: listTestScore ?? this.listTestScore,
       testSchedule: testSchedule ?? this.testSchedule,
+      dsFieldAn: dsFieldAn ?? this.dsFieldAn,
       testScore: testScore ?? this.testScore,
     );
   }
@@ -217,6 +145,7 @@ class Model extends Equatable {
       subjects,
       listTestScore,
       testSchedule,
+      dsFieldAn,
       testScore,
     ];
   }

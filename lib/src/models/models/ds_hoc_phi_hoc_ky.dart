@@ -1,15 +1,25 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'ds_hoc_phi_hoc_ky.g.dart';
+
+@JsonSerializable()
 class DsHocPhiHocKy extends Equatable {
+  @JsonKey(name: 'ten_nhom_ct')
   final String? tenNhomCt;
+  @JsonKey(name: 'ten_hoc_ky')
   final String? tenHocKy;
+  @JsonKey(name: 'hoc_phi')
   final String? hocPhi;
+  @JsonKey(name: 'mien_giam')
   final String? mienGiam;
+  @JsonKey(name: 'phai_thu')
   final String? phaiThu;
+  @JsonKey(name: 'tong_hoc_bong')
   final String? tongHocBong;
+  @JsonKey(name: 'da_thu')
   final String? daThu;
+  @JsonKey(name: 'con_no')
   final String? conNo;
 
   const DsHocPhiHocKy({
@@ -23,39 +33,11 @@ class DsHocPhiHocKy extends Equatable {
     this.conNo,
   });
 
-  factory DsHocPhiHocKy.fromMap(Map<String, dynamic> data) => DsHocPhiHocKy(
-        tenNhomCt: data['ten_nhom_ct'] as String?,
-        tenHocKy: data['ten_hoc_ky'] as String?,
-        hocPhi: data['hoc_phi'] as String?,
-        mienGiam: data['mien_giam'] as String?,
-        phaiThu: data['phai_thu'] as String?,
-        tongHocBong: data['tong_hoc_bong'] as String?,
-        daThu: data['da_thu'] as String?,
-        conNo: data['con_no'] as String?,
-      );
-
-  Map<String, dynamic> toMap() => {
-        'ten_nhom_ct': tenNhomCt,
-        'ten_hoc_ky': tenHocKy,
-        'hoc_phi': hocPhi,
-        'mien_giam': mienGiam,
-        'phai_thu': phaiThu,
-        'tong_hoc_bong': tongHocBong,
-        'da_thu': daThu,
-        'con_no': conNo,
-      };
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [DsHocPhiHocKy].
-  factory DsHocPhiHocKy.fromJson(String data) {
-    return DsHocPhiHocKy.fromMap(json.decode(data) as Map<String, dynamic>);
+  factory DsHocPhiHocKy.fromJson(Map<String, dynamic> json) {
+    return _$DsHocPhiHocKyFromJson(json);
   }
 
-  /// `dart:convert`
-  ///
-  /// Converts [DsHocPhiHocKy] to a JSON string.
-  String toJson() => json.encode(toMap());
+  Map<String, dynamic> toJson() => _$DsHocPhiHocKyToJson(this);
 
   DsHocPhiHocKy copyWith({
     String? tenNhomCt,

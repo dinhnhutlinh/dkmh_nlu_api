@@ -1,54 +1,109 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-import 'data.dart';
+import 'ds_diem_hocky.dart';
 
+part 'test_score.g.dart';
+
+@JsonSerializable()
 class TestScore extends Equatable {
-  final Data? data;
-  final bool? result;
-  final int? code;
+  @JsonKey(name: 'total_items')
+  final int? totalItems;
+  @JsonKey(name: 'total_pages')
+  final int? totalPages;
+  @JsonKey(name: 'ds_diem_hocky')
+  final List<DsDiemHocky>? dsDiemHocky;
+  @JsonKey(name: 'ds_field_an_cot_diem')
+  final List<dynamic>? dsFieldAnCotDiem;
+  @JsonKey(name: 'hien_thi_khoa_thi')
+  final bool? hienThiKhoaThi;
+  @JsonKey(name: 'hien_thi_cot_diem_tp')
+  final bool? hienThiCotDiemTp;
+  @JsonKey(name: 'hien_thi_cot_diem_k1')
+  final bool? hienThiCotDiemK1;
+  @JsonKey(name: 'hien_thi_cot_mhtt')
+  final bool? hienThiCotMhtt;
+  @JsonKey(name: 'hien_thi_cot_stctt')
+  final bool? hienThiCotStctt;
+  @JsonKey(name: 'is_show_diemtk10')
+  final bool? isShowDiemtk10;
+  @JsonKey(name: 'is_show_diem_thi')
+  final bool? isShowDiemThi;
+  @JsonKey(name: 'mesage_diemtk4')
+  final String? mesageDiemtk4;
+  @JsonKey(name: 'mesage_diemtkc')
+  final String? mesageDiemtkc;
 
-  const TestScore({this.data, this.result, this.code});
+  const TestScore({
+    this.totalItems,
+    this.totalPages,
+    this.dsDiemHocky,
+    this.dsFieldAnCotDiem,
+    this.hienThiKhoaThi,
+    this.hienThiCotDiemTp,
+    this.hienThiCotDiemK1,
+    this.hienThiCotMhtt,
+    this.hienThiCotStctt,
+    this.isShowDiemtk10,
+    this.isShowDiemThi,
+    this.mesageDiemtk4,
+    this.mesageDiemtkc,
+  });
 
-  factory TestScore.fromMap(Map<String, dynamic> data) => TestScore(
-        data: data['data'] == null
-            ? null
-            : Data.fromMap(data['data'] as Map<String, dynamic>),
-        result: data['result'] as bool?,
-        code: data['code'] as int?,
-      );
-
-  Map<String, dynamic> toMap() => {
-        'data': data?.toMap(),
-        'result': result,
-        'code': code,
-      };
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [TestScore].
-  factory TestScore.fromJson(String data) {
-    return TestScore.fromMap(json.decode(data) as Map<String, dynamic>);
+  factory TestScore.fromJson(Map<String, dynamic> json) {
+    return _$TestScoreFromJson(json);
   }
 
-  /// `dart:convert`
-  ///
-  /// Converts [TestScore] to a JSON string.
-  String toJson() => json.encode(toMap());
+  Map<String, dynamic> toJson() => _$TestScoreToJson(this);
 
   TestScore copyWith({
-    Data? data,
-    bool? result,
-    int? code,
+    int? totalItems,
+    int? totalPages,
+    List<DsDiemHocky>? dsDiemHocky,
+    List<dynamic>? dsFieldAnCotDiem,
+    bool? hienThiKhoaThi,
+    bool? hienThiCotDiemTp,
+    bool? hienThiCotDiemK1,
+    bool? hienThiCotMhtt,
+    bool? hienThiCotStctt,
+    bool? isShowDiemtk10,
+    bool? isShowDiemThi,
+    String? mesageDiemtk4,
+    String? mesageDiemtkc,
   }) {
     return TestScore(
-      data: data ?? this.data,
-      result: result ?? this.result,
-      code: code ?? this.code,
+      totalItems: totalItems ?? this.totalItems,
+      totalPages: totalPages ?? this.totalPages,
+      dsDiemHocky: dsDiemHocky ?? this.dsDiemHocky,
+      dsFieldAnCotDiem: dsFieldAnCotDiem ?? this.dsFieldAnCotDiem,
+      hienThiKhoaThi: hienThiKhoaThi ?? this.hienThiKhoaThi,
+      hienThiCotDiemTp: hienThiCotDiemTp ?? this.hienThiCotDiemTp,
+      hienThiCotDiemK1: hienThiCotDiemK1 ?? this.hienThiCotDiemK1,
+      hienThiCotMhtt: hienThiCotMhtt ?? this.hienThiCotMhtt,
+      hienThiCotStctt: hienThiCotStctt ?? this.hienThiCotStctt,
+      isShowDiemtk10: isShowDiemtk10 ?? this.isShowDiemtk10,
+      isShowDiemThi: isShowDiemThi ?? this.isShowDiemThi,
+      mesageDiemtk4: mesageDiemtk4 ?? this.mesageDiemtk4,
+      mesageDiemtkc: mesageDiemtkc ?? this.mesageDiemtkc,
     );
   }
 
   @override
-  List<Object?> get props => [data, result, code];
+  List<Object?> get props {
+    return [
+      totalItems,
+      totalPages,
+      dsDiemHocky,
+      dsFieldAnCotDiem,
+      hienThiKhoaThi,
+      hienThiCotDiemTp,
+      hienThiCotDiemK1,
+      hienThiCotMhtt,
+      hienThiCotStctt,
+      isShowDiemtk10,
+      isShowDiemThi,
+      mesageDiemtk4,
+      mesageDiemtkc,
+    ];
+  }
 }

@@ -1,12 +1,19 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'ds_diem_mon_hoc.g.dart';
+
+@JsonSerializable()
 class DsDiemMonHoc extends Equatable {
+  @JsonKey(name: 'ten_mon')
   final String? tenMon;
+  @JsonKey(name: 'ket_qua')
   final int? ketQua;
+  @JsonKey(name: 'hien_thi_ket_qua')
   final bool? hienThiKetQua;
+  @JsonKey(name: 'KhoaThi')
   final int? khoaThi;
+  @JsonKey(name: 'ds_diem_thanh_phan')
   final List<dynamic>? dsDiemThanhPhan;
 
   const DsDiemMonHoc({
@@ -17,33 +24,11 @@ class DsDiemMonHoc extends Equatable {
     this.dsDiemThanhPhan,
   });
 
-  factory DsDiemMonHoc.fromMap(Map<String, dynamic> data) => DsDiemMonHoc(
-        tenMon: data['ten_mon'] as String?,
-        ketQua: data['ket_qua'] as int?,
-        hienThiKetQua: data['hien_thi_ket_qua'] as bool?,
-        khoaThi: data['KhoaThi'] as int?,
-        dsDiemThanhPhan: data['ds_diem_thanh_phan'] as List<dynamic>?,
-      );
-
-  Map<String, dynamic> toMap() => {
-        'ten_mon': tenMon,
-        'ket_qua': ketQua,
-        'hien_thi_ket_qua': hienThiKetQua,
-        'KhoaThi': khoaThi,
-        'ds_diem_thanh_phan': dsDiemThanhPhan,
-      };
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [DsDiemMonHoc].
-  factory DsDiemMonHoc.fromJson(String data) {
-    return DsDiemMonHoc.fromMap(json.decode(data) as Map<String, dynamic>);
+  factory DsDiemMonHoc.fromJson(Map<String, dynamic> json) {
+    return _$DsDiemMonHocFromJson(json);
   }
 
-  /// `dart:convert`
-  ///
-  /// Converts [DsDiemMonHoc] to a JSON string.
-  String toJson() => json.encode(toMap());
+  Map<String, dynamic> toJson() => _$DsDiemMonHocToJson(this);
 
   DsDiemMonHoc copyWith({
     String? tenMon,

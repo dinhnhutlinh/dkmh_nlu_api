@@ -1,37 +1,23 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'ds_hoc_ky.g.dart';
+
+@JsonSerializable()
 class DsHocKy extends Equatable {
+  @JsonKey(name: 'hoc_ky')
   final int? hocKy;
+  @JsonKey(name: 'ten_hoc_ky')
   final String? tenHocKy;
   final int? hiendiensv;
 
   const DsHocKy({this.hocKy, this.tenHocKy, this.hiendiensv});
 
-  factory DsHocKy.fromMap(Map<String, dynamic> data) => DsHocKy(
-        hocKy: data['hoc_ky'] as int?,
-        tenHocKy: data['ten_hoc_ky'] as String?,
-        hiendiensv: data['hiendiensv'] as int?,
-      );
-
-  Map<String, dynamic> toMap() => {
-        'hoc_ky': hocKy,
-        'ten_hoc_ky': tenHocKy,
-        'hiendiensv': hiendiensv,
-      };
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [DsHocKy].
-  factory DsHocKy.fromJson(String data) {
-    return DsHocKy.fromMap(json.decode(data) as Map<String, dynamic>);
+  factory DsHocKy.fromJson(Map<String, dynamic> json) {
+    return _$DsHocKyFromJson(json);
   }
 
-  /// `dart:convert`
-  ///
-  /// Converts [DsHocKy] to a JSON string.
-  String toJson() => json.encode(toMap());
+  Map<String, dynamic> toJson() => _$DsHocKyToJson(this);
 
   DsHocKy copyWith({
     int? hocKy,
